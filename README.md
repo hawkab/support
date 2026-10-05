@@ -13,6 +13,14 @@ custom:
   - https://hawkab.github.io/support/
 ```
 
+Reference the standard badge by URL instead of copying the image into each repository:
+
+```markdown
+[![Support this project · TON network](https://hawkab.github.io/support/support-button.svg)](https://hawkab.github.io/support/)
+```
+
+`support-button.svg` and `support-qr.png` in this repository are the canonical badge and QR assets published by GitHub Pages.
+
 GitHub Pages publishes the static files from the root of `main`. To preview locally, run `python3 -m http.server 8000` and open `http://localhost:8000/`.
 
 When changing the payment link, update the recipient and jetton in `index.html`, and regenerate `support-qr.png` from the complete `ton://transfer/…?jetton=…` URI. Keep both representations identical.
