@@ -1,0 +1,145 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright 2026 Grigory Olshansky -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support the open-source projects of Grigory Olshansky. Scan the QR code or open the payment link in your TON wallet.">
+  <link rel="icon" type="image/svg+xml" href="support-icon.svg">
+  <title>Support Grigory Olshansky</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f4f8; --surface: #fff; --text: #272431; --muted: #686371;
+      --line: #e8e5ed; --soft: #f7f6fa; --blue: #087bb8; --blue-hover: #066899; --accent: #087bb8;
+      font-family: Ubuntu, "Segoe UI", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #17151e; --surface: #24212d; --text: #f5f2fa; --muted: #b9b3c5;
+        --line: #3b3547; --soft: #1e1b27; --accent: #6dc7f8;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--text);
+      background: radial-gradient(ellipse at 10% 0, #087bb811, transparent 60%), var(--bg);
+      display: grid; place-items: center; padding: 48px 24px;
+    }
+    main { width: min(100%, 760px); }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; font-weight: 600; }
+    .brand img { width: 44px; height: 44px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 36px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) 212px; gap: 32px; align-items: center; }
+    .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 12px 0 16px; font-size: clamp(28px, 4vw, 36px); line-height: 1.15; letter-spacing: -.025em; }
+    p { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0 0 20px; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid #329bd0; outline-offset: 4px;
+    }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    button, .primary {
+      min-height: 44px; border-radius: 12px; padding: 10px 14px; font: inherit;
+      font-size: 13px; font-weight: 600; border: 1px solid var(--line); cursor: pointer;
+      color: var(--text); background: var(--surface); text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    button:hover { background: var(--soft); }
+    .primary { color: white; background: var(--blue); border-color: var(--blue); }
+    .primary:hover { background: var(--blue-hover); }
+    svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    figure { margin: 0; text-align: center; }
+    .qr { display: block; width: 212px; height: 212px; border-radius: 16px; background: white; }
+    figcaption { font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 10px; }
+    .amount { font-size: 12px; margin: 12px 0 0; }
+    .recipient { margin-top: 32px; border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--soft); }
+    .recipient-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .recipient-label { font-size: 13px; font-weight: 600; }
+    .network { color: var(--muted); font-size: 12px; font-weight: normal; }
+    code { display: block; font-family: "Ubuntu Mono", ui-monospace, monospace; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; margin-top: 12px; }
+    .copy-address { min-height: 36px; padding: 7px 10px; font-size: 12px; }
+    .manual { margin-top: 16px; }
+    .manual label { display: block; margin-bottom: 8px; font-size: 13px; }
+    .manual input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--soft); color: var(--text); }
+    footer { padding: 20px 2px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    footer a { color: inherit; text-underline-offset: 3px; }
+    .status { min-height: 22px; margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+    @media (max-width: 620px) {
+      body { padding: 28px 16px; }
+      .card { padding: 24px; border-radius: 20px; }
+      .intro { grid-template-columns: 1fr; gap: 24px; }
+      figure { justify-self: center; }
+      .actions > * { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><img src="support-icon.svg" alt=""><span>Grigory Olshansky</span></div>
+    <section class="card" aria-labelledby="title">
+      <div class="intro">
+        <div>
+          <span class="eyebrow">Optional support</span>
+          <h1 id="title">Help me keep building useful software.</h1>
+          <p>Your contribution supports the development, maintenance and testing of my free, open-source projects.</p>
+          <div class="actions">
+            <a class="primary" id="open-wallet" href="https://app.tonkeeper.com/transfer/UQAHqYcL2i1sls0c_R9o22r-m3zORIg2bzCC1gGW4rjK94G9?jetton=EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs">
+              Open Tonkeeper
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M6 6h8v8"/></svg>
+            </a>
+            <button id="copy-link" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9" height="10" rx="2"/><path d="M12 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>
+              Copy payment link
+            </button>
+          </div>
+          <p class="amount">You choose the amount in your wallet.</p>
+        </div>
+        <figure>
+          <img class="qr" src="support-qr.png" alt="QR code for the payment link">
+          <figcaption>Scan in a compatible TON wallet</figcaption>
+        </figure>
+      </div>
+      <div class="recipient">
+        <div class="recipient-head">
+          <span class="recipient-label">Recipient <span class="network">· TON network</span></span>
+          <button id="copy-address" class="copy-address" type="button">Copy address</button>
+        </div>
+        <code id="address">UQAHqYcL2i1sls0c_R9o22r-m3zORIg2bzCC1gGW4rjK94G9</code>
+      </div>
+      <div id="manual-copy" class="manual" hidden>
+        <label for="copy-value">Select and copy this text:</label>
+        <input id="copy-value" readonly>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+    <footer>
+      <span>Maintained by Grigory Olshansky</span>
+      <a href="https://github.com/hawkab">Explore my projects ↗</a>
+    </footer>
+  </main>
+  <script>
+    const address = document.getElementById('address').textContent.trim();
+    const paymentLink = 'ton://transfer/' + address + '?jetton=EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs';
+    const status = document.getElementById('status');
+    async function copy(value, message) {
+      const manual = document.getElementById('manual-copy');
+      const input = document.getElementById('copy-value');
+      manual.hidden = true;
+      try {
+        await navigator.clipboard.writeText(value);
+        status.textContent = message;
+      } catch {
+        manual.hidden = false;
+        input.value = value;
+        input.focus();
+        input.select();
+        status.textContent = 'Clipboard access is unavailable. The text is selected for copying.';
+      }
+    }
+    document.getElementById('copy-address').addEventListener('click', () => copy(address, 'Address copied.'));
+    document.getElementById('copy-link').addEventListener('click', () => copy(paymentLink, 'Payment link copied.'));
+  </script>
+</body>
+</html>
